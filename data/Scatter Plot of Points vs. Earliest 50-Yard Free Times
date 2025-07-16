@@ -1,0 +1,22 @@
+# 2. Create the scatter plot
+plt.figure(figsize=(10, 6)) # Set the figure size
+
+# Using plt.scatter() to create the scatter plot
+# x-axis: 'earliest_times'
+# y-axis: 'ratings'
+# alpha: transparency of the points
+# s: size of the points
+df['points_clean'] = pd.to_numeric(df['points'], errors='coerce')
+plt.scatter(df['earliest_50y_free_time'], df['points_clean'], alpha=0.7, s=50, color='skyblue', edgecolors='black')
+
+# 3. Add labels and title for clarity
+plt.title('Points vs. Earliest Times', fontsize=16)
+plt.xlabel('Earliest Times (Units)', fontsize=12) # Replace 'Units' with actual units if known
+plt.ylabel('Points', fontsize=12)
+
+# Add a grid for better readability
+plt.grid(True, linestyle='--', alpha=0.6)
+
+# 4. Display the plot
+plt.tight_layout() # Adjusts plot to ensure everything fits
+plt.show()
