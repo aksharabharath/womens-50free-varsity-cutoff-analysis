@@ -1,3 +1,5 @@
+import matplotlib.pyplot as plt
+
 plt.figure(figsize=(10, 6)) # Set the figure size for better readability
 
 plt.hist(df['earliest_50y_free_time'], bins=30, edgecolor='black', alpha=.7)
