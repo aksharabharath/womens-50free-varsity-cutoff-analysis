@@ -57,3 +57,24 @@ This scatter plot visualizes the relationship between each swimmer’s **earlies
 ✅ This trend reinforces the idea that **better swim performance directly leads to higher rankings**, making the scatter plot valuable for understanding **performance-based point systems** and identifying **top-performing athletes**.
 
 ---
+
+### 🟪 Box Plot: Time Distribution by Grade
+
+The box plot displays how swim times are **distributed** for each grade level (Freshman through Senior).
+- Each box shows the **middle 50%** for swimmers in that grade.
+- The horizontal line in the box is the **median time**.
+- Outliers are shown as individual points outside the whiskers
+- Upperclassmen, especially juniors and seniors, show **lower medians and narrower boxes**, indicating stronger and more consistent performance.  
+
+✅ This plot is ideal for **comparing time ranges and medians** across grades, showing both **typical performance and consistency** within each class.
+
+---
+
+### 📉 Line Chart: Progression of Average 50 Free Times by Grade
+
+The line chart tracks the **average 50-yard freestyle time** across grade levels to **highlight improvement over time.**
+- A downward slope indicates **swimmers get faster each year**
+- This trend reflects **natural improvements** from training, experience, and physical development
+- Steeper drops between grades show where the most progress is made — often **between Sophomore and Senior years**
+
+✅ This visualization helps set **grade-level benchmarks, track annual improvement, and guide long-term training goals** for both swimmers and coaches
