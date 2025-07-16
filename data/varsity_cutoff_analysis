@@ -1,0 +1,27 @@
+import pandas as pd
+
+# Load and clean data
+df = pd.read_csv("varsity_50_free_times.csv")
+df['earliest_50y_free_time'] = pd.to_numeric(df['earliest_50y_free_time'], errors='coerce')
+df = df.dropna(subset=['earliest_50y_free_time', 'class'])
+
+# Step 1: Calculate Varsity Cutoff Time (Top 30%)
+varsity_cutoff = df['earliest_50y_free_time'].quantile(0.3)
+print(f"🎯 Estimated Varsity Cutoff (Top 30%): {varsity_cutoff:.2f} seconds")
+
+# Step 2: Filter freshmen using 'FR' label
+freshmen_df = df[df['class'].str.strip().str.upper() == 'FR']
+qualifying_freshmen = freshmen_df[freshmen_df['earliest_50y_free_time'] <= varsity_cutoff]
+
+# Output results
+num_qualifying = len(qualifying_freshmen)
+total_freshmen = len(freshmen_df)
+
+print(f"👩‍🎓 Number of Freshmen at or under Varsity Cutoff: {num_qualifying}")
+print(f"📊 Total Freshmen in Data: {total_freshmen}")
+
+if total_freshmen > 0:
+    percent_qualifying = (num_qualifying / total_freshmen) * 100
+    print(f"✅ Percentage of Freshmen Qualifying for Varsity: {percent_qualifying:.1f}%")
+else:
+    print("⚠️ Still no freshman data found.")
