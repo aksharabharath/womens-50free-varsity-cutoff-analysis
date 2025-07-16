@@ -1,0 +1,75 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+import numpy as np
+
+csv_file_path = 'varsity_50_free_times.csv'
+
+try:
+    # 1. Load your actual CSV file into a Pandas DataFrame
+    df = pd.read_csv(csv_file_path)
+    print(f"Successfully loaded data from '{csv_file_path}'")
+    print("First 5 rows of your DataFrame:")
+    print(df.head())
+
+except FileNotFoundError:
+    print(f"Error: The file '{csv_file_path}' was not found.")
+    print("Please ensure the CSV file is in the correct directory or provide the full path.")
+    exit()
+except Exception as e:
+    print(f"An error occurred while loading the CSV: {e}")
+    exit()
+
+required_columns = ['earliest_50y_free_time', 'class']
+
+if not all(col in df.columns for col in required_columns):
+    missing_cols = [col for col in required_columns if col not in df.columns]
+    print(f"Error: One or more required columns ({', '.join(missing_cols)}) not found in the DataFrame.")
+    print("Please ensure your CSV file contains 'earliest_50y_free_time' and 'class' columns (case-sensitive).")
+else:
+    # Convert 'earliest_50y_free_time' to numeric, coercing errors to NaN
+    df['earliest_50y_free_time'] = pd.to_numeric(df['earliest_50y_free_time'], errors='coerce')
+
+    df_cleaned = df.dropna(subset=['earliest_50y_free_time']).copy()
+
+    if not df_cleaned.empty:
+        class_order = ['FR', 'SO', 'JR', 'SR']
+
+        df_cleaned.loc[:, 'class'] = pd.Categorical(df_cleaned['class'].astype(str).str.lower().map({'fr': 'FR', 'so': 'SO', 'jr': 'JR', 'sr': 'SR'}), categories=class_order, ordered=True)
+
+        # Drop any rows where 'class' might not be in the defined order
+        df_cleaned = df_cleaned.dropna(subset=['class']).copy()
+
+        # Calculate the average (mean) 50-yard free time for each class
+        # The .groupby() method groups the DataFrame by 'class'
+        # .mean() then calculates the average of 'earliest_50y_free_time' for each group
+        # .reset_index() converts the grouped result back into a DataFrame
+        average_times_by_class = df_cleaned.groupby('class')['earliest_50y_free_time'].mean().reset_index()
+
+        average_times_by_class['class'] = pd.Categorical(average_times_by_class['class'], categories=class_order, ordered=True)
+        average_times_by_class = average_times_by_class.sort_values('class')
+
+
+        plt.figure(figsize=(10, 6)) # Set the figure size
+
+        # Use seaborn.barplot to create the bar chart
+        # x: The categorical variable (class)
+        # y: The numerical variable (average earliest_50y_free_time)
+        sns.barplot(x='class', y='earliest_50y_free_time', data=average_times_by_class, palette='viridis')
+
+        # 3. Add labels and title for clarity
+        plt.title('Average 50-Yard Free Swim Time by Class', fontsize=16)
+        plt.xlabel('Class', fontsize=12)
+        plt.ylabel('Average 50-Yard Free Time (Seconds)', fontsize=12)
+
+        # Add a grid for better readability
+        plt.grid(axis='y', linestyle='--', alpha=0.7)
+
+        plt.xticks(rotation=0)
+
+        # 4. Display the plot
+        plt.tight_layout() # Adjusts plot to ensure everything fits
+        plt.show()
+    else:
+        print("The 'earliest_50y_free_time' column is empty or contains no valid numeric data after cleaning.")
+        print("Please check your CSV file for data in this column.")
