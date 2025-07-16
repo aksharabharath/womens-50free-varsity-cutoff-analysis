@@ -1,0 +1,9 @@
+plt.figure(figsize=(10, 6)) # Set the figure size for better readability
+
+plt.hist(df['earliest_50y_free_time'], bins=30, edgecolor='black', alpha=.7)
+
+plt.title('Distribution of Earliest 50-Year Free Time', fontsize=16)
+plt.xlabel('Earliest 50-Year Free Time (Seconds)', fontsize=12) # Replace 'Units' with actual units if known
+plt.ylabel('Number of Students', fontsize=12)
+
+plt.grid(axis='y', alpha=0.75)
