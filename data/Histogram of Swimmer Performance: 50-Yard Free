@@ -9,3 +9,5 @@ plt.xlabel('Earliest 50-Year Free Time (Seconds)', fontsize=12) # Replace 'Units
 plt.ylabel('Number of Students', fontsize=12)
 
 plt.grid(axis='y', alpha=0.75)
+
+#This histogram displays the distribution of swimmers’ earliest 50-yard freestyle times, providing a clear picture of performance frequency across the dataset. Most swimmers fall between 30 and 35 seconds, with the highest concentration around 30–32 seconds, indicating that this is the most common performance band. As swim times increase past 35 seconds, the number of swimmers steadily declines, with very few swimmers above 45 seconds. This creates a right-skewed distribution, where a few slower times extend the tail of the graph. Overall, the histogram reveals that the majority of athletes are clustered near varsity-level times, making this chart useful for estimating a potential cutoff point and identifying outliers in performance.
