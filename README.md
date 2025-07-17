@@ -12,6 +12,18 @@ This project analyzes high school girls' swim times in the 50-yard freestyle to 
 
 ---
 
+## 📁 Dataset Description
+
+The dataset used in this project is a **CSV file** compiled by collecting publicly available information, primarily sourced from [SwimCloud.com](https://www.swimcloud.com).  
+
+It contains swim times and related performance data for **53 high school female swimmers** during the 2024-2025 season.  
+
+The data includes each swimmer’s earliest recorded 50-yard freestyle time, grade level, and performance points used in the analysis.
+
+Since this dataset is manually assembled from public snippets, it may not represent all swimmers or schools comprehensively but provides a useful sample for estimating varsity cutoff trends.
+
+--
+
 ## 🔍 Key Findings
 
 1. **Cutoff Time Ranges for Varsity Qualification**  
