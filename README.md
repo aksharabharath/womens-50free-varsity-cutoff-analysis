@@ -7,8 +7,7 @@ This project analyzes high school girls' swim times in the 50-yard freestyle to 
 ## 📊 Project Overview
 
 - 📈 **Goal:** Estimate varsity qualifying times and understand athlete performance across grade levels  
-- 📋 **Data:** 50-yard freestyle times from a sample of high school female swimmers  
-  *(same school, same year, and same meet type — update with exact source: e.g., “2024–2025 season, inter-school dual meets, XYZ High School”)*  
+- 📋 **Data:** 50-yard freestyle times from a sample of high school female swimmers (2024-2025 American High School Womens Swim Team)
 - 🧮 **Tools Used:** Google Sheets / Excel for calculations, CSV for data storage, GitHub for version control
 
 ---
